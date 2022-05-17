@@ -1,6 +1,13 @@
-import { useAddress, useMetamask, useEditionDrop, useToken, useVote, useNetwork } from '@thirdweb-dev/react';
-import { ChainId } from '@thirdweb-dev/sdk'
-import { useState, useEffect, useMemo } from 'react';
+import {
+  useAddress,
+  useMetamask,
+  useEditionDrop,
+  useToken,
+  useVote,
+  useNetwork,
+} from "@thirdweb-dev/react";
+import { ChainId } from "@thirdweb-dev/sdk";
+import { useState, useEffect, useMemo } from "react";
 import { AddressZero } from "@ethersproject/constants";
 
 const App = () => {
@@ -11,11 +18,13 @@ const App = () => {
   console.log("👋 Address:", address);
 
   // Initialize our editionDrop contract
-  const editionDrop = useEditionDrop("INSERT_EDITION_DROP_ADDRESS");
+  const editionDrop = useEditionDrop(
+    "0x1c468acE8C66e20236c82A32398fFb08a275CB9d"
+  );
   // Initialize our token contract
-  const token = useToken("INSERT_TOKEN_ADDRESS")
+  const token = useToken("0x7A51F9201A8e4d52697c06e4D7C33AF3Ce940ae8");
   // Initialize our vote contract
-  const vote = useVote("INSERT_VOTE_ADDRESS");
+  const vote = useVote("0x41953982a94d803fB651e563e601663812523e70");
 
   // State variable for us to know if user has our NFT.
   const [hasClaimedNFT, setHasClaimedNFT] = useState(false);
@@ -27,7 +36,7 @@ const App = () => {
   // The array holding all of our members addresses.
   const [memberAddresses, setMemberAddresses] = useState([]);
 
-  // A fancy function to shorten someones wallet address, no need to show the whole thing. 
+  // A fancy function to shorten someones wallet address, no need to show the whole thing.
   const shortenAddress = (str) => {
     return str.substring(0, 6) + "..." + str.substring(str.length - 4);
   };
@@ -80,7 +89,6 @@ const App = () => {
       }
     };
     checkIfUserHasVoted();
-
   }, [hasClaimedNFT, proposals, address, vote]);
 
   // This useEffect grabs all the addresses of our members holding our NFT.
@@ -93,13 +101,13 @@ const App = () => {
     // with tokenId 0.
     const getAllAddresses = async () => {
       try {
-        const memberAddresses = await editionDrop.history.getAllClaimerAddresses(0);
+        const memberAddresses =
+          await editionDrop.history.getAllClaimerAddresses(0);
         setMemberAddresses(memberAddresses);
         console.log("🚀 Members addresses", memberAddresses);
       } catch (error) {
         console.error("failed to get member list", error);
       }
-
     };
     getAllAddresses();
   }, [hasClaimedNFT, editionDrop.history]);
@@ -128,12 +136,14 @@ const App = () => {
       // We're checking if we are finding the address in the memberTokenAmounts array.
       // If we are, we'll return the amount of token the user has.
       // Otherwise, return 0.
-      const member = memberTokenAmounts?.find(({ holder }) => holder === address);
+      const member = memberTokenAmounts?.find(
+        ({ holder }) => holder === address
+      );
 
       return {
         address,
         tokenAmount: member?.balance.displayValue || "0",
-      }
+      };
     });
   }, [memberAddresses, memberTokenAmounts]);
 
@@ -165,7 +175,9 @@ const App = () => {
     try {
       setIsClaiming(true);
       await editionDrop.claim("0", 1);
-      console.log(`🌊 Successfully Minted! Check it out on OpenSea: https://testnets.opensea.io/assets/${editionDrop.getAddress()}/0`);
+      console.log(
+        `🌊 Successfully Minted! Check it out on OpenSea: https://testnets.opensea.io/assets/${editionDrop.getAddress()}/0`
+      );
       setHasClaimedNFT(true);
     } catch (error) {
       setHasClaimedNFT(false);
@@ -193,8 +205,8 @@ const App = () => {
       <div className="unsupported-network">
         <h2>Please connect to Rinkeby</h2>
         <p>
-          This dapp only works on the Rinkeby network, please switch networks
-          in your connected wallet.
+          This dapp only works on the Rinkeby network, please switch networks in
+          your connected wallet.
         </p>
       </div>
     );
@@ -342,8 +354,8 @@ const App = () => {
                 {isVoting
                   ? "Voting..."
                   : hasVoted
-                    ? "You Already Voted"
-                    : "Submit Votes"}
+                  ? "You Already Voted"
+                  : "Submit Votes"}
               </button>
               {!hasVoted && (
                 <small>
@@ -356,20 +368,17 @@ const App = () => {
         </div>
       </div>
     );
-  };
+  }
 
   // Render mint nft screen.
   return (
     <div className="mint-nft">
       <h1>Mint your free 🍪DAO Membership NFT</h1>
-      <button
-        disabled={isClaiming}
-        onClick={mintNft}
-      >
+      <button disabled={isClaiming} onClick={mintNft}>
         {isClaiming ? "Minting..." : "Mint your nft (FREE)"}
       </button>
     </div>
   );
-}
+};
 
 export default App;
