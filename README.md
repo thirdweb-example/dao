@@ -20,7 +20,13 @@ To get started with this repo, you'll need to deploy your own:
 2. [Vote Contract](https://portal.thirdweb.com/pre-built-contracts/vote)
 3. [Edition Drop Contract](https://portal.thirdweb.com/pre-built-contracts/edition-drop)
 
-Then replace the addresses in [App.jsx](./src/App.jsx) with your own contract addresses.
+Then, clone this example project by running:
+
+```bash
+npx create-tw-app --example dao
+```
+
+Replace the addresses in [App.jsx](./src/App.jsx) with your own contract addresses.
 
 ## Join our Discord!
 
