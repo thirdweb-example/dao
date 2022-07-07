@@ -23,7 +23,7 @@ To get started with this repo, you'll need to deploy your own:
 Then, clone this example project by running:
 
 ```bash
-npx thirdweb create --example dao
+npx thirdweb create --template dao
 ```
 
 Replace the addresses in [App.jsx](./src/App.jsx) with your own contract addresses.
