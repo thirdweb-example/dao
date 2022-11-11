@@ -1,18 +1,14 @@
 {
-  "name": "buildspace-v2",
-  "version": "0.1.0",
+  "name": "mydao",
+  "version": "3.0.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^14.2.0",
-    "@thirdweb-dev/react": "^2",
-    "@thirdweb-dev/sdk": "^2",
-    "ethers": "^5.6.8",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "react-scripts": "^5.0.1",
-    "web-vitals": "^2.1.4"
+    "@thirdweb-dev/react": "^3.5.1",
+    "@thirdweb-dev/sdk": "^3.5.1",
+    "ethers": "^5.6.6",
+    "react": "^18.0.2",
+    "react-dom": "^18.0.2",
+    "react-scripts": "5.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -22,8 +18,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {
@@ -37,9 +32,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "assert": "^2.0.0",
-    "stream": "^0.0.2"
   }
 }
