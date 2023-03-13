@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./index.css";
 
-// Import thirdweb provider and Goerli ChainId
+// Import thirdweb provider
 import { ThirdwebProvider } from "@thirdweb-dev/react";
 
 // This is the chain your dApp will work on.
