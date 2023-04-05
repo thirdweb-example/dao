@@ -1,22 +1,21 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import './index.css';
-import App from './App';
+import React from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import "./index.css";
 
-// Import thirdweb provider and Goerli ChainId
-import { ThirdwebProvider } from '@thirdweb-dev/react';
-import { ChainId } from '@thirdweb-dev/sdk';
+// Import thirdweb provider
+import { ThirdwebProvider } from "@thirdweb-dev/react";
 
-// This is the chainId your dApp will work on.
-const activeChainId = ChainId.Goerli;
+// This is the chain your dApp will work on.
+const activeChain = "mumbai";
 
 // Wrap your app with the thirdweb provider
-const container = document.getElementById('root');
+const container = document.getElementById("root");
 const root = createRoot(container);
 root.render(
   <React.StrictMode>
-    <ThirdwebProvider desiredChainId={activeChainId}>
+    <ThirdwebProvider activeChain={activeChain}>
       <App />
     </ThirdwebProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );

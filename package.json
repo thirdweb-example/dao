@@ -3,11 +3,11 @@
   "version": "3.0.0",
   "private": true,
   "dependencies": {
-    "@thirdweb-dev/react": "^3.5.1",
-    "@thirdweb-dev/sdk": "^3.5.1",
-    "ethers": "^5.6.6",
-    "react": "^18.0.2",
-    "react-dom": "^18.0.2",
+    "@thirdweb-dev/react": "^3",
+    "@thirdweb-dev/sdk": "^3",
+    "ethers": "^5",
+    "react": "^18.2",
+    "react-dom": "^18.2",
     "react-scripts": "5.0.0"
   },
   "scripts": {
