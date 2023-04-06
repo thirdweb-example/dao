@@ -154,12 +154,12 @@ const App = () => {
     });
   }, [memberAddresses, memberTokenAmounts]);
 
-  if (address && network?.[0].data.chain.id !== ChainId.Goerli) {
+  if (address && network?.[0].data.chain.chainId !== ChainId.Mumbai) {
     return (
       <div className="unsupported-network">
-        <h2>Please connect to Goerli</h2>
+        <h2>Please connect to Mumbai</h2>
         <p>
-          This dapp only works on the Goerli network, please switch networks in
+          This dapp only works on the Mumbai network, please switch networks in
           your connected wallet.
         </p>
       </div>
@@ -173,7 +173,7 @@ const App = () => {
       <div className="landing">
         <h1>Welcome to NarutoDAO</h1>
         <div className="btn-hero">
-          <ConnectWallet />
+          <ConnectWallet theme='light' />
         </div>
       </div>
     );
